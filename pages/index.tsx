@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { Chip, Avatar } from '@material-ui/core';
+import { Chip, Avatar, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Head from 'next/head';
 import { Layout } from 'components/Layout';
 import { RocketMan } from 'components/RocketMan';
 
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     textAlign: 'center',
     height: 'calc(100vh - 64px)',
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: any) => ({
   },
   chip: {
     margin: '5px 10px',
-    color: theme.palette.primary.text,
+    color: theme.palette.primary.contrastText,
     backgroundColor: theme.palette.primary.main,
   },
   strip: {

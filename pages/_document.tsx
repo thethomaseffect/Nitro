@@ -5,7 +5,7 @@ import flush from 'styled-jsx/server';
 import theme from 'styles/theme';
 
 class MyDocument extends Document {
-  render() {
+  render(): JSX.Element {
     return (
       <Html lang="en" dir="ltr">
         <Head>

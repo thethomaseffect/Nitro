@@ -5,21 +5,17 @@ import { green } from '@material-ui/core/colors';
 // It's optional.
 
 const theme = createMuiTheme({
-  drawerWidth: 240,
   palette: {
     primary: {
       main: '#2d2d2d',
-      text: '#fff',
+      contrastText: '#fff',
     },
     secondary: {
       light: green[300],
       main: green[500],
       dark: green[700],
     },
-    typography: {
-      useNextVariants: true,
-    },
   },
-} as any);
+});
 export type Theme = typeof theme;
 export default theme;

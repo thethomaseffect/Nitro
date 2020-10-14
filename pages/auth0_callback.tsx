@@ -10,11 +10,11 @@ const useStyles = makeStyles(() => ({
     height: '100vh',
   },
 }));
-const Auth0CallbackPage = () => {
+const Auth0CallbackPage = (): JSX.Element => {
   const { handleAuthentication } = useAuth();
   useEffect(() => {
     handleAuthentication();
-  }, []);
+  });
   const classes = useStyles();
 
   return (

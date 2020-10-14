@@ -13,7 +13,7 @@ const useStyles = makeStyles(() =>
     },
   }),
 );
-export const RocketMan = () => {
+export const RocketMan = (): JSX.Element => {
   React.useEffect(() => {
     animate();
   }, []);

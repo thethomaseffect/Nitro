@@ -10,7 +10,7 @@ const auth0_domain = process.env.AUTH0_DOMAIN as string;
 const auth0_client_id = process.env.AUTH0_CLIENT_ID as string;
 
 class MyApp extends App {
-  componentDidMount() {
+  componentDidMount(): void {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles && jssStyles.parentNode) {
@@ -18,7 +18,7 @@ class MyApp extends App {
     }
   }
 
-  render() {
+  render(): JSX.Element {
     const { Component, pageProps, router } = this.props;
     console.log(auth0_domain);
     return (
