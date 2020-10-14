@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // next.config.js
 const withPlugins = require('next-compose-plugins');
 const offline = require('next-offline');

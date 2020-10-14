@@ -8,8 +8,8 @@ const theme = createMuiTheme({
   drawerWidth: 240,
   palette: {
     primary: {
-      main: "#2d2d2d",
-      text: "#fff",
+      main: '#2d2d2d',
+      text: '#fff',
     },
     secondary: {
       light: green[300],
@@ -23,5 +23,3 @@ const theme = createMuiTheme({
 } as any);
 export type Theme = typeof theme;
 export default theme;
-
-

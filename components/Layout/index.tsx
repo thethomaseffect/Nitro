@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth,
-      backgroundColor: theme.palette.primary.main
+      backgroundColor: theme.palette.primary.main,
     },
     content: {
       flexGrow: 1,
@@ -80,7 +80,9 @@ export const Layout: React.FC<LayoutProps> = (props) => {
       <List>
         {['Info'].map((text) => (
           <ListItem button key={text} className={classes.menuItem}>
-            <ListItemIcon className={classes.menuItem}><DashboardIcon /></ListItemIcon>
+            <ListItemIcon className={classes.menuItem}>
+              <DashboardIcon />
+            </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -105,7 +107,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
           <Typography variant="h6" noWrap>
             Nitro 🚀
           </Typography>
-          <User/>
+          <User />
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
@@ -145,4 +147,4 @@ export const Layout: React.FC<LayoutProps> = (props) => {
       </main>
     </div>
   );
-}
+};
