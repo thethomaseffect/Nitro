@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     height: '100%',
     paddingTop: '10%',
-    backgroundColor: '#1d1d1d',
     zIndex: -1,
   },
   chipContainer: {
