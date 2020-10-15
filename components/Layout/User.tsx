@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import { Typography, Button, Paper, List, ListItem, Popover } from '@material-ui/core';
 import { useAuth } from 'use-auth0';
-import ExitToApp from '@material-ui/icons/ExitToApp';
+import { ExitToApp, Person } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   avatar: {
@@ -59,6 +59,10 @@ export function User(): JSX.Element {
         >
           <Paper>
             <List>
+              <ListItem button onClick={logout}>
+                <Person className={classes.dropDownIcon} />
+                Profile
+              </ListItem>
               <ListItem button onClick={logout}>
                 <ExitToApp className={classes.dropDownIcon} />
                 Logout
