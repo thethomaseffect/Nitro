@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 import { useAuth } from 'use-auth0';
 import { makeStyles } from '@material-ui/core/styles';
-import { RocketMan } from 'components/RocketMan';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -17,11 +16,7 @@ const Auth0CallbackPage = (): JSX.Element => {
   });
   const classes = useStyles();
 
-  return (
-    <div className={classes.root}>
-      <RocketMan />
-    </div>
-  );
+  return <div className={classes.root}>Loading...</div>;
 };
 
 export default Auth0CallbackPage;

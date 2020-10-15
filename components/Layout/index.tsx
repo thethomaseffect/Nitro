@@ -15,8 +15,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import { User } from './User';
-const drawerWidth = 240;
 
+const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -105,7 +105,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Nitro 🚀
+            Untitled Job Site
           </Typography>
           <User />
         </Toolbar>
