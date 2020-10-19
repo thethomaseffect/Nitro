@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-export function User(): JSX.Element {
+export function UserMenu(): JSX.Element {
   const classes = useStyles();
   const { isAuthenticated, login, logout, user } = useAuth();
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Typography from '@material-ui/core/Typography';
+import Link from 'next/link';
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Head from 'next/head';
@@ -49,6 +50,12 @@ const Index: React.FC = () => {
           <Typography variant="h3" gutterBottom>
             Untitled Job Site
           </Typography>
+          <Link href="/users/1">
+            <a>User 1</a>
+          </Link>
+          <Link href="/users/2">
+            <a>User 2</a>
+          </Link>
         </div>
       </div>
     </Layout>
