@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import { Typography, Button, Paper, List, ListItem, Popover } from '@material-ui/core';
+import { Typography, Button, Paper, List, ListItem, Popover, Link } from '@material-ui/core';
 import { useAuth } from 'use-auth0';
 import { ExitToApp, Person } from '@material-ui/icons';
 
@@ -59,10 +59,10 @@ export function UserMenu(): JSX.Element {
         >
           <Paper>
             <List>
-              <ListItem button onClick={logout}>
+              <Link href="/users/current">
                 <Person className={classes.dropDownIcon} />
                 Profile
-              </ListItem>
+              </Link>
               <ListItem button onClick={logout}>
                 <ExitToApp className={classes.dropDownIcon} />
                 Logout

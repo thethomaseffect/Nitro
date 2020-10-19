@@ -50,11 +50,12 @@ const Index: React.FC = () => {
           <Typography variant="h3" gutterBottom>
             Untitled Job Site
           </Typography>
-          <Link href="/users/1">
-            <a>User 1</a>
+          <Link href="/users/4e32a0e8f678106baded">
+            <a>Thomas</a>
           </Link>
-          <Link href="/users/2">
-            <a>User 2</a>
+          <br />
+          <Link href="/users/aca54660fb9483246382">
+            <a>Tony</a>
           </Link>
         </div>
       </div>
