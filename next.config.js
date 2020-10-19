@@ -14,8 +14,8 @@ const nextConfig = {
   },
   // Exposes Server ENV Vars To Client Using Webpack
   env: {
-    AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
-    AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
+    UNIQUEID_AUTH0_CLIENT_ID: process.env.UNIQUEID_AUTH0_CLIENT_ID,
+    UNIQUEID_AUTH0_DOMAIN: process.env.UNIQUEID_AUTH0_DOMAIN,
   },
 };
 
