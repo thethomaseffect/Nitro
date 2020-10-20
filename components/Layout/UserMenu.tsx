@@ -1,11 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import { Typography, Button, Paper, List, ListItem, Popover, Link } from '@material-ui/core';
+import { Typography, Button, Paper, List, ListItem, Popover, Theme } from '@material-ui/core';
 import { useAuth } from 'use-auth0';
 import { ExitToApp, Person } from '@material-ui/icons';
+import Link from 'next/link';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   avatar: {
     marginRight: 10,
   },
@@ -16,11 +17,18 @@ const useStyles = makeStyles({
   },
   text: {
     margin: 'auto',
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    },
   },
   dropDownIcon: {
     marginRight: 8,
   },
-});
+  menuLink: {
+    'text-decoration': 'none',
+    color: theme.palette.text.primary,
+  },
+}));
 
 export function UserMenu(): JSX.Element {
   const classes = useStyles();
@@ -59,10 +67,12 @@ export function UserMenu(): JSX.Element {
         >
           <Paper>
             <List>
-              <Link href="/users/current">
+              <ListItem button>
                 <Person className={classes.dropDownIcon} />
-                Profile
-              </Link>
+                <Link href="/users/current">
+                  <a className={classes.menuLink}>Profile</a>
+                </Link>
+              </ListItem>
               <ListItem button onClick={logout}>
                 <ExitToApp className={classes.dropDownIcon} />
                 Logout
