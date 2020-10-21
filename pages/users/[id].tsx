@@ -1,3 +1,4 @@
+import { Container } from '@material-ui/core';
 import { getAllUserIds, getUserById } from 'adapters/db/user';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import * as React from 'react';
@@ -7,9 +8,11 @@ import { Layout } from '../../components/Layout';
 const UserPage: React.FC<{ user: User }> = ({ user }) => {
   return (
     <Layout>
-      {user.firstName}
-      <br />
-      {user.lastName}
+      <Container>
+        {user.firstName}
+        <br />
+        {user.lastName}
+      </Container>
     </Layout>
   );
 };

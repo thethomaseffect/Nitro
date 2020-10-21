@@ -21,6 +21,7 @@ const userOne = {
   id: USER_ONE_ID,
   firstName: 'Thomas',
   lastName: 'Geraghty',
+  contactMethods: [],
 };
 
 // I used a sub value of auth0|5f8d78a7bbda50006a0fbd5c
@@ -28,4 +29,5 @@ const userTwo = {
   id: USER_TWO_ID,
   firstName: 'Tony',
   lastName: 'McAnulty',
+  contactMethods: [],
 };

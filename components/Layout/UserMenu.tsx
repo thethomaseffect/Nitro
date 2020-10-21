@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import { Typography, Button, Paper, List, ListItem, Popover, Theme } from '@material-ui/core';
+import { Typography, Button, Paper, List, ListItem, Popover, Theme, Hidden } from '@material-ui/core';
 import { useAuth } from 'use-auth0';
 import { ExitToApp, Person } from '@material-ui/icons';
 import Link from 'next/link';
@@ -14,12 +14,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: 'auto',
     display: 'flex',
     padding: '10px 10px',
-  },
-  text: {
-    margin: 'auto',
-    [theme.breakpoints.down('md')]: {
-      display: 'none',
-    },
   },
   dropDownIcon: {
     marginRight: 8,
@@ -47,9 +41,9 @@ export function UserMenu(): JSX.Element {
       <>
         <Button aria-describedby={id} className={classes.root} onClick={handleOpen} color="secondary">
           <Avatar alt={user.name} src={user.picture} className={classes.avatar} />
-          <Typography className={classes.text} variant="body2">
-            {user.name}
-          </Typography>
+          <Hidden mdDown>
+            <Typography variant="body2">{user.name}</Typography>
+          </Hidden>
         </Button>
         <Popover
           id={id}
