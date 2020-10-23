@@ -22,6 +22,8 @@ const userOne = {
   firstName: 'Thomas',
   lastName: 'Geraghty',
   contactMethods: [],
+  embeddedMedia: [],
+  about: '',
 };
 
 // I used a sub value of auth0|5f8d78a7bbda50006a0fbd5c
@@ -30,4 +32,6 @@ const userTwo = {
   firstName: 'Tony',
   lastName: 'McAnulty',
   contactMethods: [],
+  embeddedMedia: [],
+  about: '',
 };

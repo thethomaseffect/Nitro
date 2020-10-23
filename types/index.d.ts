@@ -2,10 +2,10 @@ export type User = {
   id: string;
   firstName: string;
   lastName: string;
-  currentLocation?: {
-    simple?: string; // I'll add fancy geo features later and this will likely be a backup for people who don't want those
-  };
+  currentLocation?: Location;
   contactMethods: ContactMethod[];
+  about: string;
+  embeddedMedia: EmbeddedMedia[];
 };
 
 /**
@@ -16,4 +16,40 @@ export type User = {
 type ContactMethod = {
   label: string;
   url: string;
+};
+
+type EmbeddedMedia = {
+  key: 'twitter-feed' | 'instagram-feed';
+  value: string;
+  settings?: {
+    [key: string]: string;
+  };
+};
+
+/**
+ * This should be the experience all more specific types extend from, and it should
+ * be general enough to cover professional, education, side-projects etc.
+ */
+type RelevantExperience = {
+  title: string;
+  startDate: string;
+  endDate?: string;
+  location?: Location;
+  description?: string;
+};
+
+type Location = SimpleLocation | ComplexLocation;
+
+type SimpleLocation = {
+  simple: string;
+};
+
+type ComplexLocation = {
+  geo: string;
+};
+
+type Skill = {
+  title: string;
+  id?: string; // Ideally skills will be part of the internal skills matrix, if so they'll have an associated id.
+  duration?: string; // Skills default to the duration of the associated experience but can be refined
 };
