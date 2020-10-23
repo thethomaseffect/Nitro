@@ -12,6 +12,14 @@ Allowed Origins: `http://localhost:8080`
 
 ## Adding Secrets
 
+```
+ npx vercel secrets add secret-dash-separated-key secretvalue
+```
+
+Note that whatever the secret value is would be saved to command history, so be careful
+of this. Either manually remove it afterwards or use a technique such as this for your
+shell https://serverfault.com/questions/241154/run-command-in-bash-without-save-in-history
+
 ### Server-Side
 
 Add to the `.env` file, remembering to add a dummy value to `.env.template` for committing, then add it to the `.now.json` env section (NOT the one nested under build), making sure to use the same style as previously added entries. It can then be accessed via `process.env.SECRET_KEY` in server-side application code. Note that for production environments the `.env` file will not be available and the secrets will need to be added using the vercel CLI tool.
