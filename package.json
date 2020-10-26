@@ -44,7 +44,7 @@
     "webpack": "^4.44.2"
   },
   "scripts": {
-    "dev": "vercel dev --listen 8080",
+    "dev": "next dev --port 8080",
     "build": "next build",
     "start": "next start",
     "lint": "eslint -c .eslintrc.js ."

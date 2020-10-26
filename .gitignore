@@ -3,4 +3,4 @@
 /.vs
 .vercel
 .env
-.env.build
+.env.local
