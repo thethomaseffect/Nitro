@@ -1,12 +1,6 @@
 {
   "name": "nitro",
   "version": 2,
-  "builds": [
-    {
-      "src": "next.config.js",
-      "use": "@now/next"
-    }
-  ],
   "build": {
     "env": {
       "UNIQUEID_AUTH0_DOMAIN": "@uniqueid-auth0-domain",
