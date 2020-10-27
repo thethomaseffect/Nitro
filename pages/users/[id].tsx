@@ -9,9 +9,13 @@ const UserPage: React.FC<{ user: User }> = ({ user }) => {
   return (
     <Layout>
       <Container>
-        {user.firstName}
+        Name: {user.surnameFirst ? user.lastName + ' ' + user.firstName : user.firstName + ' ' + user.lastName}
         <br />
-        {user.lastName}
+        Location:{' '}
+        {user.currentLocation && 'geo' in user.currentLocation ? 'A complex location' : user.currentLocation?.simple}
+        <br />
+        About: {user.about}
+        <br />
       </Container>
     </Layout>
   );
