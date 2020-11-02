@@ -1,4 +1,4 @@
-import { Container, createStyles, Grid, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
+import { Container, createStyles, Divider, Grid, makeStyles, Paper, Theme, Typography, Box } from '@material-ui/core';
 import Image from 'material-ui-image';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { getAllUserIds, getUserById } from 'adapters/db/user';
@@ -6,6 +6,14 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import * as React from 'react';
 import { User } from 'types';
 import { Layout } from '../../components/Layout';
+import humanizeDuration from 'humanize-duration';
+
+const humanizedDuration = (fromStr: string, toStr?: string): string => {
+  const from = new Date(fromStr).getTime();
+  const to = toStr ? new Date(toStr).getTime() : new Date().getTime();
+  const duration = to - from;
+  return humanizeDuration(duration, { units: ['y', 'mo'], round: true });
+};
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,7 +36,7 @@ const UserPage: React.FC<{ user: User }> = ({ user }) => {
     <Layout>
       <Container>
         <br />
-        <div>
+        <Box>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={3}>
               <Paper className={classes.paper}>
@@ -36,7 +44,7 @@ const UserPage: React.FC<{ user: User }> = ({ user }) => {
                   {user.surnameFirst ? user.lastName + ' ' + user.firstName : user.firstName + ' ' + user.lastName}
                 </Typography>
                 <Typography className={classes.location} variant="h6">
-                  <LocationOnIcon />{' '}
+                  <LocationOnIcon color="primary" fontSize="small" />{' '}
                   {user.currentLocation && 'geo' in user.currentLocation
                     ? 'A complex location'
                     : user.currentLocation?.simple}
@@ -45,14 +53,47 @@ const UserPage: React.FC<{ user: User }> = ({ user }) => {
               </Paper>
             </Grid>
             <Grid item xs={12} sm={9}>
-              <Paper>
+              <Paper className={classes.paper}>
                 <Typography variant="h3">About</Typography>
                 <br />
                 <Typography>{user.about}</Typography>
               </Paper>
+              <br />
+              <Paper className={classes.paper}>
+                <Typography variant="h3">Experience</Typography>
+                <br />
+                {user.experience.length === 0
+                  ? 'Nothing added yet'
+                  : user.experience.map((experience, index) => (
+                      <Grid container key={index}>
+                        <Grid item xs={12} sm={6}>
+                          <Typography variant="h6">{experience.title}</Typography>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                          <Typography>
+                            {new Date(experience.startDate).toLocaleDateString('en-gb', {
+                              year: 'numeric',
+                              month: 'long',
+                            }) + ' - '}
+                            {experience.endDate
+                              ? new Date(experience.endDate).toLocaleDateString('en-gb', {
+                                  year: 'numeric',
+                                  month: 'long',
+                                })
+                              : 'Current'}
+                            {' ('}
+                            {humanizedDuration(experience.startDate, experience.endDate)}
+                            {')'}
+                          </Typography>
+                        </Grid>
+                        <Divider light />
+                        <br />
+                      </Grid>
+                    ))}
+              </Paper>
             </Grid>
           </Grid>
-        </div>
+        </Box>
       </Container>
     </Layout>
   );

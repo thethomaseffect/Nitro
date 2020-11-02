@@ -26,7 +26,44 @@ const userOne = {
   },
   contactMethods: [],
   embeddedMedia: [],
-  experience: [],
+  experience: [
+    {
+      title: 'Title 1',
+      startDate: '2019-11-02 11:35:56',
+      location: {
+        simple: 'Galway, Ireland',
+      },
+      description: 'My current job',
+      skills: [
+        {
+          simple: 'A simple skill 1',
+        },
+        {
+          simple: 'A simple skill 2',
+        },
+      ],
+    },
+    {
+      title: 'Title 2',
+      startDate: '2015-09-10 11:35:56',
+      endDate: '2019-11-01 11:35:56',
+      location: {
+        simple: 'London, United Kingdom',
+      },
+      description: 'My old job',
+      skills: [
+        {
+          simple: 'A simple skill 1',
+        },
+        {
+          simple: 'A simple skill 2',
+        },
+        {
+          simple: 'A simple skill 3',
+        },
+      ],
+    },
+  ],
   about: 'An engineer interested in type systems',
 };
 
