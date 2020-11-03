@@ -1,4 +1,15 @@
-import { Container, createStyles, Divider, Grid, makeStyles, Paper, Theme, Typography, Box } from '@material-ui/core';
+import {
+  Container,
+  createStyles,
+  Divider,
+  Grid,
+  makeStyles,
+  Paper,
+  Theme,
+  Typography,
+  Box,
+  Chip,
+} from '@material-ui/core';
 import Image from 'material-ui-image';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { getAllUserIds, getUserById } from 'adapters/db/user';
@@ -86,8 +97,40 @@ const UserPage: React.FC<{ user: User }> = ({ user }) => {
                             {')'}
                           </Typography>
                         </Grid>
-                        <Divider light />
+                        <Grid item xs={12} sm={12}>
+                          <Typography className={classes.location}>
+                            <LocationOnIcon color="primary" fontSize="inherit" />{' '}
+                            {experience.location && 'geo' in experience.location
+                              ? 'A complex location'
+                              : experience.location?.simple}
+                          </Typography>
+                        </Grid>
                         <br />
+                        <br />
+                        <Grid item xs={12} sm={12}>
+                          <Typography>{experience.description}</Typography>
+                          <br />
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                          {experience.skills.map((skill, skillIndex) => (
+                            <Box key={skillIndex} component="span">
+                              <Chip label={'id' in skill ? 'A complex skill' : skill.simple} color="primary" />
+                              {'   '}
+                            </Box>
+                          ))}
+                          <br />
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                          {index + 1 !== user.experience.length ? (
+                            <Box>
+                              <br />
+                              <Divider />
+                              <br />
+                            </Box>
+                          ) : (
+                            ''
+                          )}
+                        </Grid>
                       </Grid>
                     ))}
               </Paper>
