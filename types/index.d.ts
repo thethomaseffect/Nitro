@@ -62,10 +62,10 @@ type Skill = SimpleSkill | ComplexSkill;
 
 type SimpleSkill = {
   simple: string;
-  duration?: string; // Skills default to the duration of the associated experience but can be refined
+  duration?: number; // Skills default to the duration of the associated experience but can be refined
 };
 
 type ComplexSkill = {
   id: string;
-  duration?: string; // Skills default to the duration of the associated experience but can be refined
+  duration?: number; // Skills default to the duration of the associated experience but can be refined
 };

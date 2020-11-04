@@ -9,21 +9,71 @@ import {
   Typography,
   Box,
   Chip,
+  List,
+  ListItem,
+  ListItemText,
 } from '@material-ui/core';
 import Image from 'material-ui-image';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { getAllUserIds, getUserById } from 'adapters/db/user';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import * as React from 'react';
-import { User } from 'types';
+import { RelevantExperience, User } from 'types';
 import { Layout } from '../../components/Layout';
 import humanizeDuration from 'humanize-duration';
 
-const humanizedDuration = (fromStr: string, toStr?: string): string => {
+const durationMilliseconds = (fromStr: string, toStr?: string): number => {
   const from = new Date(fromStr).getTime();
   const to = toStr ? new Date(toStr).getTime() : new Date().getTime();
-  const duration = to - from;
+  return to - from;
+};
+
+const durationHumanized = (fromStr: string, toStr?: string): string => {
+  const duration = durationMilliseconds(fromStr, toStr);
   return humanizeDuration(duration, { units: ['y', 'mo'], round: true });
+};
+
+const totalSkillDurationsMilliseconds = (relevantExperience: RelevantExperience[]): Map<string, number> => {
+  const totalSkillDurations = new Map<string, number>();
+  relevantExperience.map((experience) => {
+    experience.skills.map((skill) => {
+      if ('id' in skill) {
+        // Complex Skill, we would grab the details from the API and then use the id as the key
+        return;
+      }
+      if (skill.duration) {
+        const currentTotal = totalSkillDurations.get(skill.simple);
+        if (typeof currentTotal !== 'undefined') {
+          totalSkillDurations.set(skill.simple, currentTotal + skill.duration);
+        } else {
+          totalSkillDurations.set(skill.simple, skill.duration);
+        }
+      } else {
+        const currentTotal = totalSkillDurations.get(skill.simple);
+        const duration = durationMilliseconds(experience.startDate, experience.endDate);
+        if (typeof currentTotal !== 'undefined') {
+          totalSkillDurations.set(skill.simple, currentTotal + duration);
+        } else {
+          totalSkillDurations.set(skill.simple, duration);
+        }
+      }
+    });
+  });
+  return totalSkillDurations;
+};
+
+const totalSkillDurationsHumanized = (
+  relevantExperience: RelevantExperience[],
+): { label: string; duration: string }[] => {
+  const durations = totalSkillDurationsMilliseconds(relevantExperience);
+  const finalArray: { label: string; duration: string }[] = [];
+  durations.forEach((durationMilliseconds, label) => {
+    finalArray.push({
+      label,
+      duration: humanizeDuration(durationMilliseconds, { units: ['y', 'mo'], round: true }),
+    });
+  });
+  return finalArray;
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -42,7 +92,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const UserPage: React.FC<{ user: User }> = ({ user }) => {
   const classes = useStyles();
-
+  const durations = totalSkillDurationsHumanized(user.experience);
   return (
     <Layout>
       <Container>
@@ -93,7 +143,7 @@ const UserPage: React.FC<{ user: User }> = ({ user }) => {
                                 })
                               : 'Current'}
                             {' ('}
-                            {humanizedDuration(experience.startDate, experience.endDate)}
+                            {durationHumanized(experience.startDate, experience.endDate)}
                             {')'}
                           </Typography>
                         </Grid>
@@ -133,6 +183,18 @@ const UserPage: React.FC<{ user: User }> = ({ user }) => {
                         </Grid>
                       </Grid>
                     ))}
+              </Paper>
+              <br />
+              <Paper className={classes.paper}>
+                <Typography variant="h3">Skills</Typography>
+                <br />
+                <List>
+                  {durations.map(({ label, duration }) => (
+                    <ListItem key={label}>
+                      <ListItemText primary={label} secondary={duration} />
+                    </ListItem>
+                  ))}
+                </List>
               </Paper>
             </Grid>
           </Grid>
