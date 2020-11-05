@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import yellow from '@material-ui/core/colors/yellow';
 
 const theme = createMuiTheme({
   palette: {
@@ -7,6 +8,9 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: '#fff',
+    },
+    info: {
+      main: yellow[50],
     },
   },
 });

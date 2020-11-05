@@ -20,7 +20,6 @@ class MyApp extends App {
 
   render(): JSX.Element {
     const { Component, pageProps, router } = this.props;
-    console.log(auth0_domain);
     return (
       <ThemeProvider theme={theme}>
         <AuthProvider
@@ -30,7 +29,7 @@ class MyApp extends App {
         >
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <Head>
-            <title>My page</title>
+            <title>Untitled Job Site</title>
             <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
           </Head>
           {/* ThemeProvider makes the theme available down the React
