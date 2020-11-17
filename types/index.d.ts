@@ -10,6 +10,15 @@ export type User = {
   experience: RelevantExperience[];
 };
 
+export type Organization = {
+  id: string;
+  name: string;
+  locations: Location[];
+  contactMethods: ContactMethod[];
+  about: string;
+  embeddedMedia: EmbeddedMedia[];
+};
+
 /**
  * Client-side code will examine URLs and transform results where required
  * eg. emails will have mailto added, small icons added beside each one for popular methods
