@@ -1,77 +1,39 @@
-import { User } from 'types';
+import { Organization } from 'types';
 
-const USER_ONE_ID = '4e32a0e8f678106baded';
-const USER_TWO_ID = 'aca54660fb9483246382';
+// These are just from changing some random chars, not real (but since we use current time we couldn't check anyways)
+const ORGANIZATION_ONE_ID = '4e32a0e8f678106badef';
+const ORGANIZATION_TWO_ID = 'aca54660fb9483246383';
 
-export const getUserById = (id: string): User => {
-  if (id === 'current') {
-    return userOne; // TODO: Get the currently logged in user. If no user logged in error
-  } else if (id === USER_ONE_ID) {
-    return userOne;
-  } else if (id === USER_TWO_ID) {
-    return userTwo;
+export const getOrganizationById = (id: string): Organization => {
+  if (id === ORGANIZATION_ONE_ID) {
+    return orgOne;
+  } else if (id === ORGANIZATION_TWO_ID) {
+    return orgTwo;
   }
-  throw new Error('Invalid user ID');
+  throw new Error('Invalid organization ID');
 };
 
-export const getAllUserIds = (): string[] => ['current', USER_ONE_ID, USER_TWO_ID];
+export const getAllOrganizationIds = (): string[] => ['current', ORGANIZATION_ONE_ID, ORGANIZATION_TWO_ID];
 
-// ID algorithm is secret + '_' + auth0 sub value used for a SHA1, then get the first 20 characters
-const userOne = {
-  id: USER_ONE_ID,
-  firstName: 'Thomas',
-  lastName: 'Geraghty',
-  currentLocation: {
-    simple: 'Galway, Ireland',
-  },
-  contactMethods: [],
-  embeddedMedia: [],
-  experience: [
+// ID algorithm is secret + '_' + org name + current time(milliseconds) used for a SHA1, then get the first 20 characters
+const orgOne = {
+  id: ORGANIZATION_ONE_ID,
+  name: 'Cool Company One',
+  locations: [
     {
-      title: 'Title 1',
-      startDate: '2019-11-02 11:35:56',
-      location: {
-        simple: 'Galway, Ireland',
-      },
-      description: 'My current job',
-      skills: [
-        {
-          simple: 'A simple skill 1',
-        },
-        {
-          simple: 'A simple skill 2',
-        },
-      ],
-    },
-    {
-      title: 'Title 2',
-      startDate: '2015-09-10 11:35:56',
-      endDate: '2019-11-01 11:35:56',
-      location: {
-        simple: 'London, United Kingdom',
-      },
-      description: 'My old job',
-      skills: [
-        {
-          simple: 'A simple skill 1',
-        },
-        {
-          simple: 'A simple skill 2',
-        },
-        {
-          simple: 'A simple skill 3',
-        },
-      ],
+      simple: 'Galway, Ireland',
     },
   ],
-  about: 'An engineer interested in type systems',
+  contactMethods: [],
+  embeddedMedia: [],
+  about: 'A cool company to work for',
 };
 
 // I used a sub value of auth0|5f8d78a7bbda50006a0fbd5c
-const userTwo = {
-  id: USER_TWO_ID,
-  firstName: 'Tony',
-  lastName: 'McAnulty',
+const orgTwo = {
+  id: ORGANIZATION_TWO_ID,
+  name: 'Cool Company 2',
+  locations: [],
   contactMethods: [],
   embeddedMedia: [],
   experience: [],
