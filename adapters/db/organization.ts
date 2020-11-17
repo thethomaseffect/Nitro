@@ -13,7 +13,7 @@ export const getOrganizationById = (id: string): Organization => {
   throw new Error('Invalid organization ID');
 };
 
-export const getAllOrganizationIds = (): string[] => ['current', ORGANIZATION_ONE_ID, ORGANIZATION_TWO_ID];
+export const getAllOrganizationIds = (): string[] => [ORGANIZATION_ONE_ID, ORGANIZATION_TWO_ID];
 
 // ID algorithm is secret + '_' + org name + current time(milliseconds) used for a SHA1, then get the first 20 characters
 const orgOne = {
